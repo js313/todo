@@ -3,7 +3,11 @@
     <h1 class="pb-4">Tasks for <%= date %>, <%= month %>, <%= year %>
     </h1>
     <a href="/tasks/new-task" class="btn btn-info mb-2">Add a new task</a>
-    <input type="date" id="date" onchange="handleDateChange()" value="<%=fullDate%>" class="form-control">
+    <div>
+        <input type="date" id="date" value="<%=fullDate%>" class="form-control"
+            style="display: inline-block;width: 15%;">
+        <button onclick="handleDateChange()" class="btn btn-success">Get Tasks</button>
+    </div>
 
     <div class=" list-group list-group-flush p-5">
         <% tasks.forEach((task=> { %>
