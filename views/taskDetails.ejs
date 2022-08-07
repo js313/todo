@@ -1,0 +1,23 @@
+<% layout('boilerplate') %>
+
+    <h1 class="pb-2">
+        <%= task.title %>
+    </h1>
+
+    <h5>
+        <%= task.description || '' %>
+    </h5>
+    <p class="text-muted">
+        <span class="lead">Complete Before:</span>
+        <%= task.dueDate %><br>
+            <span class="lead">Created On:</span>
+            <%= task.createdOn %>
+    </p>
+
+    <div class="btn-group" role="group">
+        <a href="/tasks/<%=task._id%>/edit" class="btn btn-outline-info">Edit</a>
+        <form action="/tasks/<%=task._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger">Delete</button>
+        </form>
+        <a href="/tasks" class="btn btn-outline-secondary">Back</a>
+    </div>

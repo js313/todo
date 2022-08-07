@@ -1,0 +1,20 @@
+<% layout('boilerplate') %>
+
+    <h1 class="pb-4">Add a task</h1>
+    <form action="/tasks" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title *</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Task name" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description"
+                placeholder="Describe the task"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="due-date" class="form-label">Finish By *</label>
+            <input type="datetime-local" class="form-control" name="dueDate" id="due-date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Task</button>
+        <span class="ps-3"><a href="/tasks">Back</a></span>
+    </form>

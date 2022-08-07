@@ -1,0 +1,40 @@
+<% layout('boilerplate') %>
+
+    <h1 class="pb-4">Tasks for <%= date %>, <%= month %>, <%= year %>
+    </h1>
+    <a href="/tasks/new-task" class="btn btn-info mb-2">Add a new task</a>
+    <input type="date" id="date" onchange="handleDateChange()" value="<%=fullDate%>" class="form-control">
+
+    <div class=" list-group list-group-flush p-5">
+        <% tasks.forEach((task=> { %>
+            <a href="/tasks/<%= task._id %>"
+                class="list-group-item d-flex justify-content-between align-items-start list-group-item-action"
+                style="width: 70%;height: 65px;">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        <%= task.title %>
+                    </div>
+                    <%= task.description || '' %>
+                </div>
+                <span class="badge bg-primary rounded-pill">
+                    <%= task.createdOn %>
+                </span>
+            </a>
+            <% })) %>
+                <p>
+                    <% if(tasks.length===0) {%>
+                        No task scheduled for <%= date %>, <%= month %>. Click <span><a
+                                        href="/tasks/new-task">here</a></span>
+                                to
+                                add
+                                one.
+                                <% } %>
+                </p>
+    </div>
+    <script>
+        function handleDateChange() {
+            const date = document.getElementById('date')
+            const currentURL = location.href.split('?')[0]
+            location.href = `${currentURL}?date=${date.value}`
+        }
+    </script>
